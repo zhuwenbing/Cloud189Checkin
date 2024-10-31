@@ -14,6 +14,14 @@ jobs:
     runs-on: ubuntu-latest
     environment: user
     steps:
+      - name: Generate random delay
+        id: delay
+        run: |
+          # 生成 0 到 3600 秒之间的随机数
+          RANDOM_DELAY=$((RANDOM % 3600))
+          echo "Delaying for $RANDOM_DELAY seconds."
+          echo "::set-output name=delay::$RANDOM_DELAY"
+          sleep $RANDOM_DELAY  # 延迟执行
       - uses: actions/checkout@main
       - name: Setup Node.js environment
         uses: actions/setup-node@main

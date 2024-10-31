@@ -20,7 +20,7 @@ jobs:
           # 生成 0 到 3600 秒之间的随机数
           RANDOM_DELAY=$((RANDOM % 3600))
           echo "Delaying for $RANDOM_DELAY seconds."
-          echo "::set-output name=delay::$RANDOM_DELAY"
+          echo "delay=$RANDOM_DELAY" >> $GITHUB_OUTPUT
           sleep $RANDOM_DELAY  # 延迟执行
       - uses: actions/checkout@main
       - name: Setup Node.js environment
